@@ -1,30 +1,21 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const expressHbs = require('express-handlebars');
 
 // route imports
-const adminData = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 const shopRoutes = require('./routes/shop');
 
-// app setup
+// template engine setup
 const app = express();
-
-// render engine setup
-// hbs = expressHbs.create({
-//   layoutsDir: 'views/layouts/',
-//   defaultLayout: 'main-layout',
-//   extname: 'hbs',
-// });
-// app.engine('hbs', hbs.engine);
 app.set('view engine', 'ejs');
-// app.set('view engine', 'pug');
 app.set('views', 'views');
-app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, 'public')));
 
+app.use(bodyParser.urlencoded({ extended: true }));
+
 // routes
-app.use('/admin', adminData.routes);
+app.use('/admin', adminRoutes.routes);
 app.use(shopRoutes);
 
 // catchall route
