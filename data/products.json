@@ -1,8 +1,1 @@
-[
-  {
-    "title": "Node.js",
-    "imageUrl": "https://media.istockphoto.com/id/173015527/photo/a-single-red-book-on-a-white-surface.jpg?s=612x612&w=0&k=20&c=AeKmdZvg2_bRY2Yct7odWhZXav8CgDtLMc_5_pjSItY=",
-    "description": "A big book of node stuff",
-    "price": "178"
-  }
-]
+[{"id":"0.1","title":"Node.js","imageUrl":"https://media.istockphoto.com/id/173015527/photo/a-single-red-book-on-a-white-surface.jpg?s=612x612&w=0&k=20&c=AeKmdZvg2_bRY2Yct7odWhZXav8CgDtLMc_5_pjSItY=","description":"A big book of node stuff","price":"178"},{"title":"Toaster","imageUrl":"https://m.media-amazon.com/images/I/71F-IqyCk9L.jpg","description":"Would anyone like some toast?","price":"14.95","id":"0.0021637589713758842"}]
