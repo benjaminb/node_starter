@@ -1,3 +1,4 @@
+const { FILE } = require('dns');
 const fs = require('fs');
 const path = require('path');
 
@@ -31,6 +32,41 @@ module.exports = class Cart {
       fs.writeFile(FILEPATH, JSON.stringify(cart), (err) => {
         console.log(err);
       });
+    });
+  }
+
+  static deleteProduct(id, price) {
+    fs.readFile(FILEPATH, (err, fileContent) => {
+      if (err) {
+        console.log('Error reading cart file:', err);
+        return;
+      }
+      const cart = JSON.parse(fileContent);
+      const updatedCart = { ...cart };
+
+      const productToDelete = cart.products.find((product) => product.id === id);
+      if (!productToDelete) {
+        return;
+      }
+      const valueBeingDeleted = productToDelete.qty * price;
+      updatedCart.products = updatedCart.products.filter((product) => product.id !== id);
+      updatedCart.totalPrice -= valueBeingDeleted;
+
+      fs.writeFile(FILEPATH, JSON.stringify(updatedCart), (err) => {
+        console.log(err);
+      });
+    });
+  }
+
+  static getCart(cb) {
+    fs.readFile(FILEPATH, (err, fileContent) => {
+      if (err) {
+        console.log('Error reading cart file:', err);
+        cb(null);
+      } else {
+        const cart = JSON.parse(fileContent);
+        cb(cart);
+      }
     });
   }
 };
