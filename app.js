@@ -1,10 +1,10 @@
 const path = require('path');
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoConnect = require('./util/database');
+const mongoConnect = require('./util/database').mongoConnect;
 
 // route imports
-// const adminRoutes = require('./routes/admin');
+const adminRoutes = require('./routes/admin');
 // const shopRoutes = require('./routes/shop');
 // const errorController = require('./controllers/errors');
 
@@ -33,7 +33,6 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // // catchall route
 // app.use(errorController.get404);
 
-mongoConnect(client => {
-  console.log(client);
+mongoConnect(() => {
   app.listen(3000);
 });
