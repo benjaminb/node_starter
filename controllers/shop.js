@@ -1,6 +1,6 @@
 const Product = require('../models/product');
-const Cart = require('../models/cart');
-const Order = require('../models/order');
+// const Cart = require('../models/cart');
+// const Order = require('../models/order');
 
 exports.getCart = (req, res, next) => {
   req.user
@@ -90,7 +90,7 @@ exports.postCartDeleteProduct = (req, res, next) => {
 };
 
 exports.getIndex = (req, res, next) => {
-  Product.findAll()
+  Product.fetchAll()
     .then(products => {
       res.render('shop/index', {
         products: products,
@@ -116,7 +116,7 @@ exports.getOrders = (req, res, next) => {
 };
 
 exports.getProduct = (req, res, next) => {
-  Product.findByPk(req.params.productId)
+  Product.findById(req.params.productId)
     .then(product => {
       res.render('shop/product-detail', {
         product: product,
@@ -128,7 +128,7 @@ exports.getProduct = (req, res, next) => {
 };
 
 exports.getProducts = (req, res, next) => {
-  Product.findAll()
+  Product.fetchAll()
     .then(products => {
       res.render('shop/index', {
         products: products,
